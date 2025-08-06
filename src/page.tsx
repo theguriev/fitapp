@@ -15,7 +15,7 @@ export default function Home({ children }: { children?: ReactNode }) {
   const formattedDate = format(today, "EEEE, d MMM", { locale: enUS });
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -43,7 +43,7 @@ export default function Home({ children }: { children?: ReactNode }) {
         </div>
       </header>
       {/* Хедер при скролле */}
-      <header 
+      <header
         className="header-on-scroll sticky top-0 flex items-center justify-center bg-background/70 backdrop-blur-[40px] backdrop-saturate-[180%] border-b border-border/30 transition-all duration-300 p-4 z-50 cursor-pointer hover:bg-background/80 active:scale-95"
         onClick={scrollToTop}
       >
