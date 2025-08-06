@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { Link } from "react-router";
 import ExerciseCard from "./components/exercise-card";
 import NavUser from "./components/nav-user";
+import NutritionCard from "./components/nutrition-card";
 import { StepsCard } from "./components/steps-card";
 
 export default function Home({ children }: { children?: ReactNode }) {
@@ -43,6 +44,7 @@ export default function Home({ children }: { children?: ReactNode }) {
         <div className="max-w-md mx-auto space-y-4">
           <StepsCard />
           <ExerciseCard />
+          <NutritionCard />
         </div>
         {children}
       </main>{" "}

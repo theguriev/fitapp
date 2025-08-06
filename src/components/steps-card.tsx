@@ -49,17 +49,16 @@ export function StepsCard() {
           <ChevronRight className="w-5 h-5 text-purple-400" />
         </CardAction>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-4">
         {/* Шаги за сегодня */}
-        <div className="mb-4">
-          <p className="text-sm text-muted-foreground mb-2">Сегодня</p>
+        <div>
+          <p className="text-sm text-muted-foreground">Сегодня</p>
           <p className="text-4xl font-light text-purple-400 tabular-nums">
             {stepCount.toLocaleString()}
           </p>
         </div>
 
-        {/* График шагов */}
-        <div className="space-y-3">
+        <div>
           {/* Столбцы графика */}
           <div className="flex items-end justify-between h-16 gap-1">
             {hourlySteps.map((steps, index) => {

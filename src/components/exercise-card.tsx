@@ -16,16 +16,16 @@ export default function WorkoutSessionCard() {
           <ChevronRight className="w-5 h-5 text-green-400" />
         </CardAction>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-4">
         {/* Workout Icon */}
-        <div className="mb-2">
-          <div className="w-12 h-12 bg-gradient-to-tr from-green-500 to-green-400 rounded-full flex items-center justify-center">
-            <Dumbbell className="w-6 h-6 text-white" />
+        <div>
+          <div className="size-12 bg-gradient-to-tr from-green-500 to-green-400 rounded-full flex items-center justify-center">
+            <Dumbbell className="size-6 text-white" />
           </div>
         </div>
 
         {/* Workout Details */}
-        <div className="space-y-2">
+        <div>
           <h3 className="text-xl font-medium">Прогулка на улице</h3>
 
           <div className="text-4xl font-light text-green-400 tabular-nums">
