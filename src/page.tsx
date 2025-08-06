@@ -4,6 +4,7 @@ import { enUS } from "date-fns/locale";
 import type { ReactNode } from "react";
 import { Link } from "react-router";
 import ExerciseCard from "./components/exercise-card";
+import MeasurementsCard from "./components/measurements-card";
 import NavUser from "./components/nav-user";
 import NutritionCard from "./components/nutrition-card";
 import { StepsCard } from "./components/steps-card";
@@ -45,6 +46,7 @@ export default function Home({ children }: { children?: ReactNode }) {
         <div className="max-w-md mx-auto space-y-4">
           <StepsCard />
           <WeightCard />
+          <MeasurementsCard />
           <NutritionCard />
           <ExerciseCard />
         </div>

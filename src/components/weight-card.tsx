@@ -55,10 +55,13 @@ export default function WeightCard() {
             ) : (
               <TrendingUp className="h-4 w-4 text-red-600" />
             )}
-            <span className={`text-sm font-medium ${
-              isLosingWeight ? 'text-green-600' : 'text-red-600'
-            }`}>
-              {isLosingWeight ? '' : '+'}{weightChange.toFixed(1)} кг
+            <span
+              className={`text-sm font-medium ${
+                isLosingWeight ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {isLosingWeight ? "" : "+"}
+              {weightChange.toFixed(1)} кг
             </span>
           </div>
         </div>
@@ -67,7 +70,7 @@ export default function WeightCard() {
         <WeightChart data={weightData.history} />
 
         {/* Прогресс к цели */}
-        <WeightProgress 
+        <WeightProgress
           current={weightData.current}
           target={weightData.target}
           start={weightData.startWeight}
@@ -78,7 +81,9 @@ export default function WeightCard() {
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">До цілі:</span>
             <span className="font-medium">
-              {remainingWeight > 0 ? `${remainingWeight.toFixed(1)} кг` : 'Ціль досягнута! 🎉'}
+              {remainingWeight > 0
+                ? `${remainingWeight.toFixed(1)} кг`
+                : "Ціль досягнута! 🎉"}
             </span>
           </div>
         </div>
