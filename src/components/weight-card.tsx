@@ -5,9 +5,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ChevronRight, Scale, TrendingDown, TrendingUp } from "lucide-react";
+import { ChevronRight, TrendingDown, TrendingUp } from "lucide-react";
 import WeightChart from "./weight-chart";
-import WeightProgress from "./weight-progress";
 
 export default function WeightCard() {
   // Примерные данные веса
@@ -34,10 +33,7 @@ export default function WeightCard() {
   return (
     <Card className="w-full">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <Scale className="h-5 w-5 text-blue-600" />
-          Вага
-        </CardTitle>
+        <CardTitle className="flex items-center gap-2 text-lg">Вага</CardTitle>
         <CardAction>
           <ChevronRight className="w-5 h-5 text-blue-600" />
         </CardAction>
@@ -67,13 +63,9 @@ export default function WeightCard() {
         </div>
 
         {/* График веса */}
-        <WeightChart data={weightData.history} />
-
-        {/* Прогресс к цели */}
-        <WeightProgress
-          current={weightData.current}
-          target={weightData.target}
-          start={weightData.startWeight}
+        <WeightChart
+          data={weightData.history}
+          targetWeight={weightData.target}
         />
 
         {/* Информация о цели */}
