@@ -1,13 +1,18 @@
-import { Button } from "@/components/ui/button";
+import { Routes, Route } from "react-router";
 import Providers from "./components/providers";
 import { Toaster } from "@/components/ui/sonner";
+import Home from "./page";
+import Workouts from "./pages/Workouts";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
     <Providers>
-      <div className="flex min-h-svh flex-col items-center justify-center">
-        <Button>Click me</Button>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/workouts" element={<Workouts />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
       <Toaster />
     </Providers>
   );
