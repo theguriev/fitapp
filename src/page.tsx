@@ -40,7 +40,7 @@ export default function Home({ children }: { children?: ReactNode }) {
       </header>
       {/* Хедер при скролле */}
       <header className="header-on-scroll sticky top-0 flex items-center justify-center bg-background/70 backdrop-blur-[40px] backdrop-saturate-[180%] border-b border-border/30 transition-all duration-300 p-4 z-50">
-        <h2 className="text-lg font-semibold">Головна</h2>
+        <h2 className="font-semibold">Головна</h2>
       </header>
       <main className="flex-1 overflow-auto p-4">
         <div className="max-w-md mx-auto space-y-4">
