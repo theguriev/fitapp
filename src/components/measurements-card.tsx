@@ -10,7 +10,7 @@ import MeasurementsRings from "./measurements-rings";
 import MeasurementsStats from "./measurements-stats";
 
 export default function MeasurementsCard() {
-  // Примерные данные замеров (в см)
+  // Приблизні дані замірів (в см)
   const measurementsData = {
     arm: {
       current: 32.5,
@@ -48,12 +48,12 @@ export default function MeasurementsCard() {
         </CardAction>
       </CardHeader>
       <CardContent className="space-y-6">
-        {/* Круги замеров */}
+        {/* Кільця замірів */}
         <div className="flex justify-center">
           <MeasurementsRings measurements={measurementsData} />
         </div>
 
-        {/* Статистика замеров */}
+        {/* Статистика замірів */}
         <MeasurementsStats measurements={measurementsData} />
       </CardContent>
     </Card>

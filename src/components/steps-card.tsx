@@ -11,7 +11,7 @@ import {
 export function StepsCard() {
   const [stepCount] = useState(3672);
 
-  // Данные по часам для графика шагов (24 часа)
+  // Дані по годинах для графіка кроків (24 години)
   const hourlySteps = [
     0,
     0,
@@ -44,22 +44,22 @@ export function StepsCard() {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Шаги</CardTitle>
+        <CardTitle>Кроки</CardTitle>
         <CardAction>
           <ChevronRight className="w-5 h-5 text-purple-400" />
         </CardAction>
       </CardHeader>
       <CardContent className="space-y-4">
-        {/* Шаги за сегодня */}
+        {/* Кроки за сьогодні */}
         <div>
-          <p className="text-sm text-muted-foreground">Сегодня</p>
+          <p className="text-sm text-muted-foreground">Сьогодні</p>
           <p className="text-4xl font-light text-purple-400 tabular-nums">
             {stepCount.toLocaleString()}
           </p>
         </div>
 
         <div>
-          {/* Столбцы графика */}
+          {/* Стовпці графіка */}
           <div className="flex items-end justify-between h-16 gap-1">
             {hourlySteps.map((steps, index) => {
               const height = maxSteps > 0 ? (steps / maxSteps) * 100 : 0;
@@ -77,7 +77,7 @@ export function StepsCard() {
             })}
           </div>
 
-          {/* Временные метки */}
+          {/* Часові мітки */}
           <div className="flex justify-between text-xs text-muted-foreground">
             <span>00</span>
             <span>06</span>

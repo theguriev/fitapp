@@ -11,7 +11,7 @@ export default function WorkoutSessionCard() {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Упражнения</CardTitle>
+        <CardTitle>Вправи</CardTitle>
         <CardAction>
           <ChevronRight className="w-5 h-5 text-green-400" />
         </CardAction>
@@ -26,7 +26,7 @@ export default function WorkoutSessionCard() {
 
         {/* Workout Details */}
         <div>
-          <h3 className="text-xl font-medium">Прогулка на улице</h3>
+          <h3 className="text-xl font-medium">Прогулянка на вулиці</h3>
 
           <div className="text-4xl font-light text-green-400 tabular-nums">
             11,53<span className="text-2xl">KM</span>

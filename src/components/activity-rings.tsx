@@ -14,9 +14,9 @@ export default function ActivityRings({
   const center = ringSize / 2;
 
   // Calculate ring radii (from outer to inner) - like Apple Activity Rings
-  const fatsRadius = center - strokeWidth; // Жиры (внешний)
-  const carbsRadius = center - strokeWidth * 3; // Углеводы (средний)
-  const proteinsRadius = center - strokeWidth * 5; // Белки (внутренний)
+  const fatsRadius = center - strokeWidth; // Жири (зовнішній)
+  const carbsRadius = center - strokeWidth * 3; // Вуглеводи (середній)
+  const proteinsRadius = center - strokeWidth * 5; // Білки (внутрішній)
 
   // Calculate circumferences
   const fatsCircumference = 2 * Math.PI * fatsRadius;
@@ -80,7 +80,7 @@ export default function ActivityRings({
           />
 
           {/* Progress circles */}
-          {/* Жиры (внешний круг) - красный/розовый */}
+          {/* Жири (зовнішнє кільце) - червоний/рожевий */}
           <circle
             cx={center}
             cy={center}
@@ -94,7 +94,7 @@ export default function ActivityRings({
             className="transition-all duration-1000 ease-out"
           />
 
-          {/* Углеводы (средний круг) - зеленый */}
+          {/* Вуглеводи (середнє кільце) - зелений */}
           <circle
             cx={center}
             cy={center}
@@ -108,7 +108,7 @@ export default function ActivityRings({
             className="transition-all duration-1000 ease-out"
           />
 
-          {/* Белки (внутренний круг) - голубой */}
+          {/* Білки (внутрішнє кільце) - блакитний */}
           <circle
             cx={center}
             cy={center}

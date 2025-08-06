@@ -23,12 +23,12 @@ export default function MeasurementsRings({
   const strokeWidth = 6;
   const center = ringSize / 2;
 
-  // Calculate ring radii (from outer to inner) - 5 концентрических кругов
-  const hipsRadius = center - strokeWidth; // Обхват бедер (внешний)
-  const thighRadius = center - strokeWidth * 3; // Обхват бедра
-  const waistRadius = center - strokeWidth * 5; // Обхват талии (средний)
+  // Calculate ring radii (from outer to inner) - 5 концентричних кіл
+  const hipsRadius = center - strokeWidth; // Обхват стегон (зовнішній)
+  const thighRadius = center - strokeWidth * 3; // Обхват стегна
+  const waistRadius = center - strokeWidth * 5; // Обхват талії (середній)
   const chestRadius = center - strokeWidth * 7; // Обхват грудей
-  const armRadius = center - strokeWidth * 9; // Обхват плеча (внутренний)
+  const armRadius = center - strokeWidth * 9; // Обхват плеча (внутрішній)
 
   // Calculate circumferences
   const hipsCircumference = 2 * Math.PI * hipsRadius;
@@ -38,8 +38,8 @@ export default function MeasurementsRings({
   const armCircumference = 2 * Math.PI * armRadius;
 
   const getProgressPercentage = (current: number, target: number) => {
-    // Для замеров прогресс может быть разным - иногда нужно увеличить, иногда уменьшить
-    // Для простоты считаем прогресс как процент достижения цели
+    // Для замірів прогрес може бути різним - іноді потрібно збільшити, іноді зменшити
+    // Для простоти вважаємо прогрес як відсоток досягнення мети
     return Math.min((current / target) * 100, 100);
   };
 
@@ -131,7 +131,7 @@ export default function MeasurementsRings({
           />
 
           {/* Progress circles */}
-          {/* Обхват бедер (внешний круг) - коричневый */}
+          {/* Обхват стегон (зовнішнє кільце) - коричневий */}
           <circle
             cx={center}
             cy={center}
@@ -145,7 +145,7 @@ export default function MeasurementsRings({
             className="transition-all duration-1000 ease-out"
           />
 
-          {/* Обхват бедра - оранжевый */}
+          {/* Обхват стегна - помаранчевий */}
           <circle
             cx={center}
             cy={center}
@@ -159,7 +159,7 @@ export default function MeasurementsRings({
             className="transition-all duration-1000 ease-out"
           />
 
-          {/* Обхват талии (средний круг) - красно-розовый */}
+          {/* Обхват талії (середнє кільце) - червоно-рожевий */}
           <circle
             cx={center}
             cy={center}
@@ -173,7 +173,7 @@ export default function MeasurementsRings({
             className="transition-all duration-1000 ease-out"
           />
 
-          {/* Обхват грудей - зеленый */}
+          {/* Обхват грудей - зелений */}
           <circle
             cx={center}
             cy={center}
@@ -187,7 +187,7 @@ export default function MeasurementsRings({
             className="transition-all duration-1000 ease-out"
           />
 
-          {/* Обхват плеча (внутренний круг) - голубой */}
+          {/* Обхват плеча (внутрішнє кільце) - блакитний */}
           <circle
             cx={center}
             cy={center}

@@ -32,7 +32,7 @@ export default function MeasurementsStats({
     return {
       value: Math.abs(diff),
       isPositive: diff > 0,
-      isTarget: Math.abs(diff) < 0.5, // Считаем достигнутой цель если разница меньше 0.5 см
+      isTarget: Math.abs(diff) < 0.5, // Вважаємо досягнутою ціль, якщо різниця менше 0.5 см
     };
   };
 
@@ -77,7 +77,7 @@ export default function MeasurementsStats({
         );
       })}
 
-      {/* Общая информация */}
+      {/* Загальна інформація */}
       <div className="mt-4 pt-3 border-t border-border/50">
         <div className="text-center">
           <span className="text-xs text-muted-foreground">

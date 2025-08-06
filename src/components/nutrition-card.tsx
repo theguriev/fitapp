@@ -10,7 +10,7 @@ import CaloriesProgress from "./calories-progress";
 import Macronutrients from "./macronutrients";
 
 export default function NutritionCard() {
-  // Примерные данные для рациона
+  // Приблизні дані для раціону
   const nutrition = {
     calories: {
       consumed: 1420,
@@ -39,14 +39,14 @@ export default function NutritionCard() {
         </CardAction>
       </CardHeader>
       <CardContent className="space-y-6">
-        {/* Макронутриенты */}
+        {/* Макронутрієнти */}
         <Macronutrients
           proteins={nutrition.proteins}
           carbs={nutrition.carbs}
           fats={nutrition.fats}
         />
 
-        {/* Калории */}
+        {/* Калорії */}
         <CaloriesProgress
           consumed={nutrition.calories.consumed}
           target={nutrition.calories.target}

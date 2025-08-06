@@ -9,12 +9,12 @@ import { ChevronRight, TrendingDown, TrendingUp } from "lucide-react";
 import WeightChart from "./weight-chart";
 
 export default function WeightCard() {
-  // Примерные данные веса
+  // Приблизні дані ваги
   const weightData = {
     current: 78.5,
     target: 75.0,
     startWeight: 82.0,
-    // История веса за последние 7 дней
+    // Історія ваги за останні 7 днів
     history: [
       { date: "2025-08-01", weight: 79.2 },
       { date: "2025-08-02", weight: 78.8 },
@@ -39,7 +39,7 @@ export default function WeightCard() {
         </CardAction>
       </CardHeader>
       <CardContent className="space-y-6">
-        {/* Текущий вес и тренд */}
+        {/* Поточна вага та тренд */}
         <div className="flex items-center justify-between">
           <div>
             <div className="text-2xl font-bold">{weightData.current} кг</div>
@@ -62,13 +62,13 @@ export default function WeightCard() {
           </div>
         </div>
 
-        {/* График веса */}
+        {/* Графік ваги */}
         <WeightChart
           data={weightData.history}
           targetWeight={weightData.target}
         />
 
-        {/* Информация о цели */}
+        {/* Інформація про ціль */}
         <div className="bg-muted/50 rounded-lg p-3">
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">До цілі:</span>
