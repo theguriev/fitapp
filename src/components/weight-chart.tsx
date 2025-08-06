@@ -89,7 +89,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
 
   const renderChart = (period: TimePeriod) => {
     const periodData = getDataForPeriod(period);
-    
+
     // Подготавливаем данные для Recharts
     const periodChartData = periodData.map((point, index) => {
       let formattedDate = "";
@@ -228,7 +228,13 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
 
   return (
     <div className="w-full">
-      <Tabs defaultValue="W" value={selectedPeriod} onValueChange={(value: string) => setSelectedPeriod(value as TimePeriod)}>
+      <Tabs
+        defaultValue="W"
+        value={selectedPeriod}
+        onValueChange={(value: string) =>
+          setSelectedPeriod(value as TimePeriod)
+        }
+      >
         <div className="flex items-center justify-center mb-4">
           <TabsList>
             {tabs.map((tab) => (
