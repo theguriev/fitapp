@@ -14,6 +14,10 @@ export default function Home({ children }: { children?: ReactNode }) {
   const today = new Date();
   const formattedDate = format(today, "EEEE, d MMM", { locale: enUS });
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Основной хедер */}
@@ -39,7 +43,10 @@ export default function Home({ children }: { children?: ReactNode }) {
         </div>
       </header>
       {/* Хедер при скролле */}
-      <header className="header-on-scroll sticky top-0 flex items-center justify-center bg-background/70 backdrop-blur-[40px] backdrop-saturate-[180%] border-b border-border/30 transition-all duration-300 p-4 z-50">
+      <header 
+        className="header-on-scroll sticky top-0 flex items-center justify-center bg-background/70 backdrop-blur-[40px] backdrop-saturate-[180%] border-b border-border/30 transition-all duration-300 p-4 z-50 cursor-pointer hover:bg-background/80 active:scale-95"
+        onClick={scrollToTop}
+      >
         <h2 className="font-semibold">Головна</h2>
       </header>
       <main className="flex-1 overflow-auto p-4">
