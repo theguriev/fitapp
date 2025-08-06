@@ -42,10 +42,7 @@ export default function MeasurementsCard() {
   return (
     <Card className="w-full">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <Ruler className="h-5 w-5 text-purple-600" />
-          Заміри
-        </CardTitle>
+        <CardTitle>Заміри</CardTitle>
         <CardAction>
           <ChevronRight className="w-5 h-5 text-purple-600" />
         </CardAction>

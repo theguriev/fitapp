@@ -34,14 +34,14 @@ type TimePeriod = "W" | "M" | "Y";
 export default function WeightChart({ data, targetWeight }: WeightChartProps) {
   const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>("W");
 
-  // Генерируем тестовые данные для разных периодов
+  // Генеруємо тестові дані для різних періодів
   const getDataForPeriod = (period: TimePeriod) => {
     const baseWeight = 78.5;
 
     switch (period) {
-      case "W": // Неделя - оригинальные данные
+      case "W": // Тиждень - оригінальні дані
         return data;
-      case "M": // Месяц - 30 дней
+      case "M": // Місяць - 30 днів
         return Array.from({ length: 30 }, (_, i) => ({
           date: new Date(Date.now() - (29 - i) * 24 * 60 * 60 * 1000)
             .toISOString()
@@ -49,7 +49,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
           weight:
             baseWeight + (Math.random() - 0.5) * 2 + Math.sin(i / 5) * 0.5,
         }));
-      case "Y": // Год - 12 месяцев
+      case "Y": // Рік - 12 місяців
         return Array.from({ length: 12 }, (_, i) => ({
           date: new Date(2025, i, 15).toISOString().split("T")[0],
           weight: baseWeight + (Math.random() - 0.5) * 3 + (i - 6) * 0.2,
@@ -59,7 +59,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
     }
   };
 
-  // Кастомный компонент тултипа
+  // Кастомний компонент тултипа
   const CustomTooltip = ({
     active,
     payload,
@@ -90,7 +90,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
   const renderChart = (period: TimePeriod) => {
     const periodData = getDataForPeriod(period);
 
-    // Подготавливаем данные для Recharts
+    // Підготовлюємо дані для Recharts
     const periodChartData = periodData.map((point, index) => {
       let formattedDate = "";
 
@@ -123,7 +123,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
       };
     });
 
-    // Определяем диапазон для Y-оси
+    // Визначаємо діапазон для Y-осі
     const periodWeights = periodData.map((d) => d.weight);
     const periodAllWeights = [...periodWeights, targetWeight];
     const periodMinWeight = Math.min(...periodAllWeights) - 1;
@@ -174,7 +174,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
 
             <Tooltip content={<CustomTooltip />} />
 
-            {/* Целевая линия */}
+            {/* Цільова лінія */}
             <ReferenceLine
               y={targetWeight}
               stroke="hsl(142, 71%, 45%)"
@@ -213,7 +213,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
           </AreaChart>
         </ResponsiveContainer>
 
-        {/* Подписи дат */}
+        {/* Підписи дат */}
         <div className="flex justify-between mt-3 px-4 pb-4 text-xs text-muted-foreground">
           <span>{periodChartData[0]?.formattedDate}</span>
           <span>
