@@ -9,6 +9,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface WeightDataPoint {
   date: string;
@@ -27,23 +29,35 @@ interface TooltipPayload {
   };
 }
 
-export default function WeightChart({ data, targetWeight }: WeightChartProps) {
-  // Подготавливаем данные для Recharts
-  const chartData = data.map((point, index) => ({
-    ...point,
-    day: `День ${index + 1}`,
-    target: targetWeight,
-    formattedDate: new Date(point.date).toLocaleDateString("uk-UA", {
-      month: "short",
-      day: "numeric",
-    }),
-  }));
+type TimePeriod = "W" | "M" | "Y";
 
-  // Определяем диапазон для Y-оси
-  const weights = data.map((d) => d.weight);
-  const allWeights = [...weights, targetWeight];
-  const minWeight = Math.min(...allWeights) - 1;
-  const maxWeight = Math.max(...allWeights) + 1;
+export default function WeightChart({ data, targetWeight }: WeightChartProps) {
+  const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>("W");
+
+  // Генерируем тестовые данные для разных периодов
+  const getDataForPeriod = (period: TimePeriod) => {
+    const baseWeight = 78.5;
+
+    switch (period) {
+      case "W": // Неделя - оригинальные данные
+        return data;
+      case "M": // Месяц - 30 дней
+        return Array.from({ length: 30 }, (_, i) => ({
+          date: new Date(Date.now() - (29 - i) * 24 * 60 * 60 * 1000)
+            .toISOString()
+            .split("T")[0],
+          weight:
+            baseWeight + (Math.random() - 0.5) * 2 + Math.sin(i / 5) * 0.5,
+        }));
+      case "Y": // Год - 12 месяцев
+        return Array.from({ length: 12 }, (_, i) => ({
+          date: new Date(2025, i, 15).toISOString().split("T")[0],
+          weight: baseWeight + (Math.random() - 0.5) * 3 + (i - 6) * 0.2,
+        }));
+      default:
+        return data;
+    }
+  };
 
   // Кастомный компонент тултипа
   const CustomTooltip = ({
@@ -67,15 +81,59 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
     return null;
   };
 
-  return (
-    <div className="w-full">
-      <div className="text-sm font-medium mb-3 text-center">
-        Динаміка ваги (7 днів)
-      </div>
+  const tabs = [
+    { id: "W" as TimePeriod, label: "W", name: "Тиждень" },
+    { id: "M" as TimePeriod, label: "M", name: "Місяць" },
+    { id: "Y" as TimePeriod, label: "Y", name: "Рік" },
+  ];
+
+  const renderChart = (period: TimePeriod) => {
+    const periodData = getDataForPeriod(period);
+    
+    // Подготавливаем данные для Recharts
+    const periodChartData = periodData.map((point, index) => {
+      let formattedDate = "";
+
+      switch (period) {
+        case "W":
+          formattedDate = new Date(point.date).toLocaleDateString("uk-UA", {
+            month: "short",
+            day: "numeric",
+          });
+          break;
+        case "M":
+          formattedDate = new Date(point.date).toLocaleDateString("uk-UA", {
+            month: "short",
+            day: "numeric",
+          });
+          break;
+        case "Y":
+          formattedDate = new Date(point.date).toLocaleDateString("uk-UA", {
+            month: "short",
+          });
+          break;
+      }
+
+      return {
+        ...point,
+        day: `День ${index + 1}`,
+        target: targetWeight,
+        formattedDate,
+        weight: Number(point.weight.toFixed(1)),
+      };
+    });
+
+    // Определяем диапазон для Y-оси
+    const periodWeights = periodData.map((d) => d.weight);
+    const periodAllWeights = [...periodWeights, targetWeight];
+    const periodMinWeight = Math.min(...periodAllWeights) - 1;
+    const periodMaxWeight = Math.max(...periodAllWeights) + 1;
+
+    return (
       <div className="relative bg-muted/30 rounded-lg">
         <ResponsiveContainer width="100%" height={160}>
           <AreaChart
-            data={chartData}
+            data={periodChartData}
             margin={{
               top: 10,
               right: 0,
@@ -107,7 +165,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
             />
 
             <YAxis
-              domain={[minWeight, maxWeight]}
+              domain={[periodMinWeight, periodMaxWeight]}
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }}
@@ -140,13 +198,13 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
               strokeWidth={3}
               fill="url(#weightGradient)"
               dot={{
-                r: 4,
+                r: period === "Y" ? 3 : 4,
                 fill: "hsl(217, 91%, 60%)",
                 stroke: "white",
                 strokeWidth: 2,
               }}
               activeDot={{
-                r: 6,
+                r: period === "Y" ? 5 : 6,
                 fill: "hsl(217, 91%, 60%)",
                 stroke: "white",
                 strokeWidth: 2,
@@ -156,16 +214,37 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
         </ResponsiveContainer>
 
         {/* Подписи дат */}
-        <div className="flex justify-between mt-3 text-xs text-muted-foreground">
+        <div className="flex justify-between mt-3 px-4 pb-4 text-xs text-muted-foreground">
+          <span>{periodChartData[0]?.formattedDate}</span>
           <span>
-            {new Date(data[0].date).toLocaleDateString("uk-UA", {
-              month: "short",
-              day: "numeric",
-            })}
+            {period === "W"
+              ? "Сьогодні"
+              : periodChartData[periodChartData.length - 1]?.formattedDate}
           </span>
-          <span>Сьогодні</span>
         </div>
       </div>
+    );
+  };
+
+  return (
+    <div className="w-full">
+      <Tabs defaultValue="W" value={selectedPeriod} onValueChange={(value: string) => setSelectedPeriod(value as TimePeriod)}>
+        <div className="flex items-center justify-center mb-4">
+          <TabsList>
+            {tabs.map((tab) => (
+              <TabsTrigger key={tab.id} value={tab.id}>
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
+
+        {tabs.map((tab) => (
+          <TabsContent key={tab.id} value={tab.id}>
+            {renderChart(tab.id)}
+          </TabsContent>
+        ))}
+      </Tabs>
     </div>
   );
 }
