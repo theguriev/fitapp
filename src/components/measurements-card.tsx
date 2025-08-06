@@ -15,27 +15,27 @@ export default function MeasurementsCard() {
     arm: {
       current: 32.5,
       target: 35.0,
-      name: "Обхват плеча"
+      name: "Обхват плеча",
     },
     chest: {
       current: 98.2,
       target: 102.0,
-      name: "Обхват грудей"
+      name: "Обхват грудей",
     },
     waist: {
       current: 85.1,
       target: 80.0,
-      name: "Обхват талії"
+      name: "Обхват талії",
     },
     thigh: {
       current: 58.3,
       target: 60.0,
-      name: "Обхват стегна"
+      name: "Обхват стегна",
     },
     hips: {
       current: 92.7,
       target: 95.0,
-      name: "Обхват стегон"
+      name: "Обхват стегон",
     },
   };
 
@@ -55,7 +55,7 @@ export default function MeasurementsCard() {
         <div className="flex justify-center">
           <MeasurementsRings measurements={measurementsData} />
         </div>
-        
+
         {/* Статистика замеров */}
         <MeasurementsStats measurements={measurementsData} />
       </CardContent>

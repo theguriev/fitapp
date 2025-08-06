@@ -16,7 +16,9 @@ interface MeasurementsRingsProps {
   measurements: MeasurementsData;
 }
 
-export default function MeasurementsRings({ measurements }: MeasurementsRingsProps) {
+export default function MeasurementsRings({
+  measurements,
+}: MeasurementsRingsProps) {
   const ringSize = 120;
   const strokeWidth = 6;
   const center = ringSize / 2;
@@ -42,22 +44,45 @@ export default function MeasurementsRings({ measurements }: MeasurementsRingsPro
   };
 
   // Calculate stroke dash offsets for progress
-  const hipsProgress = getProgressPercentage(measurements.hips.current, measurements.hips.target);
-  const thighProgress = getProgressPercentage(measurements.thigh.current, measurements.thigh.target);
-  const waistProgress = getProgressPercentage(measurements.waist.current, measurements.waist.target);
-  const chestProgress = getProgressPercentage(measurements.chest.current, measurements.chest.target);
-  const armProgress = getProgressPercentage(measurements.arm.current, measurements.arm.target);
+  const hipsProgress = getProgressPercentage(
+    measurements.hips.current,
+    measurements.hips.target
+  );
+  const thighProgress = getProgressPercentage(
+    measurements.thigh.current,
+    measurements.thigh.target
+  );
+  const waistProgress = getProgressPercentage(
+    measurements.waist.current,
+    measurements.waist.target
+  );
+  const chestProgress = getProgressPercentage(
+    measurements.chest.current,
+    measurements.chest.target
+  );
+  const armProgress = getProgressPercentage(
+    measurements.arm.current,
+    measurements.arm.target
+  );
 
-  const hipsOffset = hipsCircumference - (hipsProgress / 100) * hipsCircumference;
-  const thighOffset = thighCircumference - (thighProgress / 100) * thighCircumference;
-  const waistOffset = waistCircumference - (waistProgress / 100) * waistCircumference;
-  const chestOffset = chestCircumference - (chestProgress / 100) * chestCircumference;
+  const hipsOffset =
+    hipsCircumference - (hipsProgress / 100) * hipsCircumference;
+  const thighOffset =
+    thighCircumference - (thighProgress / 100) * thighCircumference;
+  const waistOffset =
+    waistCircumference - (waistProgress / 100) * waistCircumference;
+  const chestOffset =
+    chestCircumference - (chestProgress / 100) * chestCircumference;
   const armOffset = armCircumference - (armProgress / 100) * armCircumference;
 
   return (
     <div className="relative flex flex-col items-center">
       <div className="relative" style={{ width: ringSize, height: ringSize }}>
-        <svg width={ringSize} height={ringSize} className="transform -rotate-90">
+        <svg
+          width={ringSize}
+          height={ringSize}
+          className="transform -rotate-90"
+        >
           {/* Background circles with opacity */}
           <circle
             cx={center}
