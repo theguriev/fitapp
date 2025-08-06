@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { format } from "date-fns";
-import { enUS } from "date-fns/locale";
+import { uk, enUS, ru } from "date-fns/locale";
 import type { ReactNode } from "react";
 import { Link } from "react-router";
 import ExerciseCard from "./components/exercise-card";
@@ -12,7 +12,17 @@ import WeightCard from "./components/weight-card";
 
 export default function Home({ children }: { children?: ReactNode }) {
   const today = new Date();
-  const formattedDate = format(today, "EEEE, d MMM", { locale: enUS });
+
+  // Автоматическое определение локали
+  const getLocale = () => {
+    const userLang = navigator.language || navigator.languages?.[0] || "en-US";
+
+    if (userLang.startsWith("uk")) return uk;
+    if (userLang.startsWith("ru")) return ru;
+    return enUS; // по умолчанию английский
+  };
+
+  const formattedDate = format(today, "EEEE, d MMM", { locale: getLocale() });
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
