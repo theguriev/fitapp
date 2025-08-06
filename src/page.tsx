@@ -7,6 +7,7 @@ import ExerciseCard from "./components/exercise-card";
 import NavUser from "./components/nav-user";
 import NutritionCard from "./components/nutrition-card";
 import { StepsCard } from "./components/steps-card";
+import WeightCard from "./components/weight-card";
 
 export default function Home({ children }: { children?: ReactNode }) {
   const today = new Date();
@@ -43,8 +44,9 @@ export default function Home({ children }: { children?: ReactNode }) {
       <main className="flex-1 overflow-auto p-4">
         <div className="max-w-md mx-auto space-y-4">
           <StepsCard />
-          <ExerciseCard />
+          <WeightCard />
           <NutritionCard />
+          <ExerciseCard />
         </div>
         {children}
       </main>{" "}
