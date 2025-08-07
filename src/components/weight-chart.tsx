@@ -236,7 +236,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
         }
       >
         <div className="flex items-center justify-center mb-4">
-          <TabsList>
+          <TabsList className="w-full">
             {tabs.map((tab) => (
               <TabsTrigger key={tab.id} value={tab.id}>
                 {tab.label}
