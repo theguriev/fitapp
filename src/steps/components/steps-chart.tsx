@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface StepsChartProps {
   period: "D" | "W" | "M" | "Y";
@@ -52,18 +53,17 @@ export default function StepsChart({ period }: StepsChartProps) {
   const maxSteps = Math.max(...data);
 
   return (
-    <div className="bg-background rounded-xl p-6 border shadow-sm">
-      {/* Кроки за период */}
-      <div className="mb-6">
-        <p className="text-sm text-muted-foreground">Кількість</p>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-sm text-muted-foreground font-normal">Кількість</CardTitle>
         <p className="text-4xl font-light text-purple-400 tabular-nums">
           {stepCount.toLocaleString()}
         </p>
-      </div>
-
-      <div>
+      </CardHeader>
+      
+      <CardContent>
         {/* Стовпці графіка */}
-        <div className="flex items-end justify-between h-32 gap-1">
+        <div className="flex items-end justify-between h-32 gap-1 mb-3">
           {data.map((steps, index) => {
             const height = maxSteps > 0 ? (steps / maxSteps) * 100 : 0;
             return (
@@ -81,12 +81,12 @@ export default function StepsChart({ period }: StepsChartProps) {
         </div>
 
         {/* Часові/періодні мітки */}
-        <div className="flex justify-between text-xs text-muted-foreground mt-3">
+        <div className="flex justify-between text-xs text-muted-foreground">
           {labels.map((label, index) => (
             <span key={index}>{label}</span>
           ))}
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
