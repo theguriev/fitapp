@@ -130,7 +130,7 @@ export default function WeightChart({ data, targetWeight }: WeightChartProps) {
     const periodMaxWeight = Math.max(...periodAllWeights) + 1;
 
     return (
-      <div className="relative bg-muted/30 rounded-lg">
+      <div className="relative rounded-lg">
         <ResponsiveContainer width="100%" height={160}>
           <AreaChart
             data={periodChartData}
