@@ -15,30 +15,30 @@ export default function WeightChart({ period }: WeightChartProps) {
         // Данные по дням недели (последние 7 дней)
         return {
           data: [76.2, 76.0, 75.8, 75.6, 75.4, 75.3, 75.5],
-          labels: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"]
+          labels: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
         };
       case "W":
         // Данные по неделям (последние 4 недели)
         return {
           data: [76.8, 76.2, 75.8, 75.5],
-          labels: ["1 тиж", "2 тиж", "3 тиж", "4 тиж"]
+          labels: ["1 тиж", "2 тиж", "3 тиж", "4 тиж"],
         };
       case "M":
         // Данные по месяцам (последние 6 месяцев)
         return {
           data: [78.5, 77.8, 77.2, 76.5, 76.0, 75.5],
-          labels: ["Лют", "Бер", "Кві", "Тра", "Чер", "Лип"]
+          labels: ["Лют", "Бер", "Кві", "Тра", "Чер", "Лип"],
         };
       case "Y":
         // Данные по годам (последние 3 года)
         return {
           data: [80.2, 77.8, 75.5],
-          labels: ["2023", "2024", "2025"]
+          labels: ["2023", "2024", "2025"],
         };
       default:
         return {
           data: [],
-          labels: []
+          labels: [],
         };
     }
   };
@@ -67,7 +67,8 @@ export default function WeightChart({ period }: WeightChartProps) {
         <div className="flex items-end justify-between h-32 gap-1 mb-3">
           {data.map((weight, index) => {
             // Нормализуем высоту относительно диапазона веса
-            const normalizedHeight = ((weight - minWeight) / weightRange) * 80 + 20;
+            const normalizedHeight =
+              ((weight - minWeight) / weightRange) * 80 + 20;
             return (
               <div
                 key={index}
@@ -95,14 +96,16 @@ export default function WeightChart({ period }: WeightChartProps) {
             <div className="flex justify-between text-sm">
               <div>
                 <span className="text-muted-foreground">Зміна: </span>
-                <span className={`font-medium ${
-                  data[data.length - 1] < data[0] 
-                    ? 'text-green-600' 
-                    : data[data.length - 1] > data[0]
-                    ? 'text-red-500'
-                    : 'text-muted-foreground'
-                }`}>
-                  {data[data.length - 1] < data[0] ? '-' : '+'}
+                <span
+                  className={`font-medium ${
+                    data[data.length - 1] < data[0]
+                      ? "text-green-600"
+                      : data[data.length - 1] > data[0]
+                      ? "text-red-500"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {data[data.length - 1] < data[0] ? "-" : "+"}
                   {Math.abs(data[data.length - 1] - data[0]).toFixed(1)} кг
                 </span>
               </div>
