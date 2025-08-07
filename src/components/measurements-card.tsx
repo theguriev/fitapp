@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChevronRight, Ruler } from "lucide-react";
+import { Link } from "react-router";
 import MeasurementsRings from "./measurements-rings";
 import MeasurementsStats from "./measurements-stats";
 
@@ -40,22 +41,24 @@ export default function MeasurementsCard() {
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader className="pb-3">
-        <CardTitle>Заміри</CardTitle>
-        <CardAction>
-          <ChevronRight className="w-5 h-5 text-purple-600" />
-        </CardAction>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {/* Кільця замірів */}
-        <div className="flex justify-center">
-          <MeasurementsRings measurements={measurementsData} />
-        </div>
+    <Link to="/measurements" className="block">
+      <Card className="w-full">
+        <CardHeader className="pb-3">
+          <CardTitle>Заміри</CardTitle>
+          <CardAction>
+            <ChevronRight className="w-5 h-5 text-purple-600" />
+          </CardAction>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Кільця замірів */}
+          <div className="flex justify-center">
+            <MeasurementsRings measurements={measurementsData} />
+          </div>
 
-        {/* Статистика замірів */}
-        <MeasurementsStats measurements={measurementsData} />
-      </CardContent>
-    </Card>
+          {/* Статистика замірів */}
+          <MeasurementsStats measurements={measurementsData} />
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
