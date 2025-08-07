@@ -1,13 +1,14 @@
 import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import StepsChart from "./components/steps-chart";
 
 export default function StepsPage() {
   return (
-    <div className="min-h-screen bg-[#f4f4f5]">
+    <div className="min-h-screen flex flex-col ">
       {/* Header with back navigation */}
-      <div className="bg-background border-border p-2">
+      <div className="flex p-2">
         <div className="flex items-center gap-1">
           <Link
             to="/"
@@ -39,7 +40,7 @@ export default function StepsPage() {
         </div>
 
         {/* Tabs */}
-        <div className="px-4 pb-3">
+        <div className="px-4">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="D">D</TabsTrigger>
             <TabsTrigger value="W">W</TabsTrigger>
@@ -64,6 +65,19 @@ export default function StepsPage() {
           </TabsContent>
         </div>
       </Tabs>
+
+      {/* Кнопка в самом низу страницы */}
+      <div className="px-4 pb-4 w-full mt-auto">
+        <Button
+          className="w-full"
+          onClick={() => {
+            // В реальном приложении здесь будет логика добавления данных
+            console.log("Открыть форму добавления данных");
+          }}
+        >
+          Внести данні
+        </Button>
+      </div>
     </div>
   );
 }
