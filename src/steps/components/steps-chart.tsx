@@ -55,12 +55,14 @@ export default function StepsChart({ period }: StepsChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-sm text-muted-foreground font-normal">Кількість</CardTitle>
+        <CardTitle className="text-sm text-muted-foreground font-normal">
+          Кількість
+        </CardTitle>
         <p className="text-4xl font-light text-purple-400 tabular-nums">
           {stepCount.toLocaleString()}
         </p>
       </CardHeader>
-      
+
       <CardContent>
         {/* Стовпці графіка */}
         <div className="flex items-end justify-between h-32 gap-1 mb-3">
