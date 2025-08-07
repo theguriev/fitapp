@@ -1,4 +1,5 @@
 import { ChevronRight, Dumbbell } from "lucide-react";
+import { Link } from "react-router";
 import {
   Card,
   CardAction,
@@ -9,35 +10,37 @@ import {
 
 export default function WorkoutSessionCard() {
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Вправи</CardTitle>
-        <CardAction>
-          <ChevronRight className="w-5 h-5 text-green-400" />
-        </CardAction>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {/* Workout Icon */}
-        <div>
-          <div className="size-12 bg-gradient-to-tr from-green-500 to-green-400 rounded-full flex items-center justify-center">
-            <Dumbbell className="size-6 text-white" />
+    <Link to="/exercise" className="block">
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle>Вправи</CardTitle>
+          <CardAction>
+            <ChevronRight className="w-5 h-5 text-green-400" />
+          </CardAction>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {/* Workout Icon */}
+          <div>
+            <div className="size-12 bg-gradient-to-tr from-green-500 to-green-400 rounded-full flex items-center justify-center">
+              <Dumbbell className="size-6 text-white" />
+            </div>
           </div>
-        </div>
 
-        {/* Workout Details */}
-        <div>
-          <h3 className="text-xl font-medium">Прогулянка на вулиці</h3>
+          {/* Workout Details */}
+          <div>
+            <h3 className="text-xl font-medium">Прогулянка на вулиці</h3>
 
-          <div className="text-4xl font-light text-green-400 tabular-nums">
-            11,53<span className="text-2xl">KM</span>
+            <div className="text-4xl font-light text-green-400 tabular-nums">
+              11,53<span className="text-2xl">KM</span>
+            </div>
           </div>
-        </div>
 
-        {/* Date */}
-        <div className="mt-2 pt-4">
-          <p className="text-sm text-gray-500">15.09.2024</p>
-        </div>
-      </CardContent>
-    </Card>
+          {/* Date */}
+          <div className="mt-2 pt-4">
+            <p className="text-sm text-gray-500">15.09.2024</p>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }

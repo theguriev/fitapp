@@ -8,6 +8,7 @@ import StepsPage from "./steps/page";
 import WeightPage from "./weight/page";
 import MeasurementsPage from "./measurements/page";
 import NutritionPage from "./nutrition/page";
+import ExercisePage from "./exercise/page";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/weight" element={<WeightPage />} />
         <Route path="/measurements" element={<MeasurementsPage />} />
         <Route path="/nutrition" element={<NutritionPage />} />
+        <Route path="/exercise" element={<ExercisePage />} />
       </Routes>
       <Toaster />
     </Providers>
