@@ -21,13 +21,10 @@ export default function WeightPage() {
       </div>
 
       {/* Tabs and Content */}
-      <Tabs defaultValue="D" className="w-full">
+      <Tabs defaultValue="W" className="w-full">
         {/* Title and Subtitle */}
         <div className="px-4 pt-4 pb-2">
           <h2 className="text-2xl font-bold mb-1">Вага</h2>
-          <TabsContent value="D" className="p-0 m-0">
-            <p className="text-sm text-muted-foreground">Сьогодні</p>
-          </TabsContent>
           <TabsContent value="W" className="p-0 m-0">
             <p className="text-sm text-muted-foreground">Цей тиждень</p>
           </TabsContent>
@@ -37,23 +34,23 @@ export default function WeightPage() {
           <TabsContent value="Y" className="p-0 m-0">
             <p className="text-sm text-muted-foreground">Цей рік</p>
           </TabsContent>
+          <TabsContent value="5Y" className="p-0 m-0">
+            <p className="text-sm text-muted-foreground">5 років</p>
+          </TabsContent>
         </div>
 
         {/* Tabs */}
         <div className="px-4">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="D">D</TabsTrigger>
             <TabsTrigger value="W">W</TabsTrigger>
             <TabsTrigger value="M">M</TabsTrigger>
             <TabsTrigger value="Y">Y</TabsTrigger>
+            <TabsTrigger value="5Y">5Y</TabsTrigger>
           </TabsList>
         </div>
 
         {/* Content */}
         <div className="p-4">
-          <TabsContent value="D" className="p-0">
-            <WeightChart period="D" />
-          </TabsContent>
           <TabsContent value="W" className="p-0">
             <WeightChart period="W" />
           </TabsContent>
@@ -62,6 +59,9 @@ export default function WeightPage() {
           </TabsContent>
           <TabsContent value="Y" className="p-0">
             <WeightChart period="Y" />
+          </TabsContent>
+          <TabsContent value="5Y" className="p-0">
+            <WeightChart period="5Y" />
           </TabsContent>
         </div>
       </Tabs>
