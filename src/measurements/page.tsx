@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import MeasurementsList from "./components/measurements-list";
+import MeasurementsChart from "./components/measurements-chart";
 
 export default function MeasurementsPage() {
   return (
@@ -26,6 +27,9 @@ export default function MeasurementsPage() {
           Відстежуйте параметри тіла
         </p>
       </div>
+
+      {/* Chart */}
+      <MeasurementsChart />
 
       {/* Content - список замеров */}
       <div className="flex-1 overflow-y-auto">
