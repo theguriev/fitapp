@@ -5,6 +5,7 @@ import Home from "./page";
 import Workouts from "./pages/Workouts";
 import Profile from "./pages/Profile";
 import StepsPage from "./steps/page";
+import AddStepsPage from "./steps/add/page";
 import WeightPage from "./weight/page";
 import MeasurementsPage from "./measurements/page";
 import NutritionPage from "./nutrition/page";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/workouts" element={<Workouts />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/steps" element={<StepsPage />} />
+        <Route path="/steps/add" element={<AddStepsPage />} />
         <Route path="/weight" element={<WeightPage />} />
         <Route path="/measurements" element={<MeasurementsPage />} />
         <Route path="/nutrition" element={<NutritionPage />} />

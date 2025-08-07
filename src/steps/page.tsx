@@ -68,15 +68,11 @@ export default function StepsPage() {
 
       {/* Кнопка в самом низу страницы */}
       <div className="px-4 pb-4 w-full mt-auto">
-        <Button
-          className="w-full"
-          onClick={() => {
-            // В реальном приложении здесь будет логика добавления данных
-            console.log("Открыть форму добавления данных");
-          }}
-        >
-          Внести данні
-        </Button>
+        <Link to="/steps/add">
+          <Button className="w-full">
+            Внести данні
+          </Button>
+        </Link>
       </div>
     </div>
   );
