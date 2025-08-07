@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
 import {
   Card,
   CardAction,
@@ -42,50 +43,52 @@ export function StepsCard() {
   const maxSteps = Math.max(...hourlySteps);
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Кроки</CardTitle>
-        <CardAction>
-          <ChevronRight className="w-5 h-5 text-purple-400" />
-        </CardAction>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {/* Кроки за сьогодні */}
-        <div>
-          <p className="text-sm text-muted-foreground">Сьогодні</p>
-          <p className="text-4xl font-light text-purple-400 tabular-nums">
-            {stepCount.toLocaleString()}
-          </p>
-        </div>
+    <Link to="/steps" className="block">
+      <Card className="w-full hover:shadow-md transition-shadow cursor-pointer">
+        <CardHeader>
+          <CardTitle>Кроки</CardTitle>
+          <CardAction>
+            <ChevronRight className="w-5 h-5 text-purple-400" />
+          </CardAction>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {/* Кроки за сьогодні */}
+          <div>
+            <p className="text-sm text-muted-foreground">Сьогодні</p>
+            <p className="text-4xl font-light text-purple-400 tabular-nums">
+              {stepCount.toLocaleString()}
+            </p>
+          </div>
 
-        <div>
-          {/* Стовпці графіка */}
-          <div className="flex items-end justify-between h-16 gap-1">
-            {hourlySteps.map((steps, index) => {
-              const height = maxSteps > 0 ? (steps / maxSteps) * 100 : 0;
-              return (
-                <div
-                  key={index}
-                  className="flex-1 bg-muted rounded-sm relative overflow-hidden h-16"
-                >
+          <div>
+            {/* Стовпці графіка */}
+            <div className="flex items-end justify-between h-16 gap-1">
+              {hourlySteps.map((steps, index) => {
+                const height = maxSteps > 0 ? (steps / maxSteps) * 100 : 0;
+                return (
                   <div
-                    className="absolute bottom-0 left-0 right-0 bg-purple-400 rounded-sm transition-all duration-300"
-                    style={{ height: `${height}%` }}
-                  />
-                </div>
-              );
-            })}
-          </div>
+                    key={index}
+                    className="flex-1 bg-muted rounded-sm relative overflow-hidden h-16"
+                  >
+                    <div
+                      className="absolute bottom-0 left-0 right-0 bg-purple-400 rounded-sm transition-all duration-300"
+                      style={{ height: `${height}%` }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
 
-          {/* Часові мітки */}
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>00</span>
-            <span>06</span>
-            <span>12</span>
-            <span>18</span>
+            {/* Часові мітки */}
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span>00</span>
+              <span>06</span>
+              <span>12</span>
+              <span>18</span>
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }

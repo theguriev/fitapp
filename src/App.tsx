@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Home from "./page";
 import Workouts from "./pages/Workouts";
 import Profile from "./pages/Profile";
+import StepsPage from "./steps/page";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/workouts" element={<Workouts />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/steps" element={<StepsPage />} />
       </Routes>
       <Toaster />
     </Providers>
