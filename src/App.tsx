@@ -5,6 +5,7 @@ import Home from "./page";
 import Workouts from "./pages/Workouts";
 import Profile from "./pages/Profile";
 import StepsPage from "./steps/page";
+import WeightPage from "./weight/page";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/workouts" element={<Workouts />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/steps" element={<StepsPage />} />
+        <Route path="/weight" element={<WeightPage />} />
       </Routes>
       <Toaster />
     </Providers>

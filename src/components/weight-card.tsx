@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChevronRight, TrendingDown, TrendingUp } from "lucide-react";
+import { Link } from "react-router";
 import WeightChart from "./weight-chart";
 
 export default function WeightCard() {
@@ -31,55 +32,57 @@ export default function WeightCard() {
   const remainingWeight = weightData.current - weightData.target;
 
   return (
-    <Card className="w-full">
-      <CardHeader className="pb-3">
-        <CardTitle>Вага</CardTitle>
-        <CardAction>
-          <ChevronRight className="w-5 h-5 text-blue-600" />
-        </CardAction>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {/* Поточна вага та тренд */}
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-2xl font-bold">{weightData.current} кг</div>
-            <div className="text-sm text-muted-foreground">Поточна вага</div>
+    <Link to="/weight" className="block">
+      <Card className="w-full hover:shadow-md transition-shadow cursor-pointer">
+        <CardHeader className="pb-3">
+          <CardTitle>Вага</CardTitle>
+          <CardAction>
+            <ChevronRight className="w-5 h-5 text-blue-600" />
+          </CardAction>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Поточна вага та тренд */}
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="text-2xl font-bold">{weightData.current} кг</div>
+              <div className="text-sm text-muted-foreground">Поточна вага</div>
+            </div>
+            <div className="flex items-center gap-2">
+              {isLosingWeight ? (
+                <TrendingDown className="h-4 w-4 text-green-600" />
+              ) : (
+                <TrendingUp className="h-4 w-4 text-red-600" />
+              )}
+              <span
+                className={`text-sm font-medium ${
+                  isLosingWeight ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {isLosingWeight ? "" : "+"}
+                {weightChange.toFixed(1)} кг
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            {isLosingWeight ? (
-              <TrendingDown className="h-4 w-4 text-green-600" />
-            ) : (
-              <TrendingUp className="h-4 w-4 text-red-600" />
-            )}
-            <span
-              className={`text-sm font-medium ${
-                isLosingWeight ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {isLosingWeight ? "" : "+"}
-              {weightChange.toFixed(1)} кг
-            </span>
-          </div>
-        </div>
 
-        {/* Графік ваги */}
-        <WeightChart
-          data={weightData.history}
-          targetWeight={weightData.target}
-        />
+          {/* Графік ваги */}
+          <WeightChart
+            data={weightData.history}
+            targetWeight={weightData.target}
+          />
 
-        {/* Інформація про ціль */}
-        <div className="bg-muted/50 rounded-lg p-3">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">До цілі:</span>
-            <span className="font-medium">
-              {remainingWeight > 0
-                ? `${remainingWeight.toFixed(1)} кг`
-                : "Ціль досягнута! 🎉"}
-            </span>
+          {/* Інформація про ціль */}
+          <div className="bg-muted/50 rounded-lg p-3">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">До цілі:</span>
+              <span className="font-medium">
+                {remainingWeight > 0
+                  ? `${remainingWeight.toFixed(1)} кг`
+                  : "Ціль досягнута! 🎉"}
+              </span>
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
